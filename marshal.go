@@ -130,7 +130,7 @@ func (x *GoSNMP) sendOneRequest(packetOut *SnmpPacket,
 		if retries > 0 {
 			x.logPrintf("Retry number %d. Last error was: %v", retries, err)
 			if time.Now().After(finalDeadline) {
-				err = fmt.Errorf("Request timeout (after %d retries)", retries-1)
+				err = fmt.Errorf("Request timeout (after %d retries) Last error was :%v", retries-1, err)
 				break
 			}
 			if retries > x.Retries {
